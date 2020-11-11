@@ -25,11 +25,10 @@ namespace AreosaManagerAPI.Provider
                     var claims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Name, user.Name),
-                        new Claim("UserID", user.Id)
                     };
 
-                    ClaimsIdentity oAutIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
-                    context.Validated(new AuthenticationTicket(oAutIdentity, new AuthenticationProperties() { }));
+                    ClaimsIdentity oAuthIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
+                    context.Validated(new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties() { }));
                 }
                 else
                 {

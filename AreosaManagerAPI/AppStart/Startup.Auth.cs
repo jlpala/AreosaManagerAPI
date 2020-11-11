@@ -4,7 +4,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
 
-namespace AreosaManagerAPI.AppStart
+namespace AreosaManagerAPI
 {
     public partial class Startup
     {
