@@ -1,4 +1,5 @@
-﻿using AreosaManagerAPI.Models;
+﻿using AreosaManagerAPI.DAL.Interfaces;
+using AreosaManagerAPI.Models;
 using AreosaManagerAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,16 @@ namespace AreosaManagerAPI.Services
 {
     public class UserService : IUserService
     {
-        public User GetUserByCredentials(string email, string password)
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository repository)
         {
-            User user = new User() { Id = 1, Email = "email@domain.com", Password = "password", Name = "Ole Petter Dahlmann" };
-            if (user != null)
-            {
-                user.Password = string.Empty;
-            }
-            return user;
+            _userRepository = repository;
+        }
+
+        public async Task<User> GetUserByCredentials(string email, string password)
+        {
+            return await _userRepository.GetUserByCredentialsAsync(email, password);
         }
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AreosaManagerAPI.Services.Interfaces
 {
-    interface IUserService
+    public interface IUserService
     {
-        public User GetUserByCredentials(string email, string password);
+        public Task<User> GetUserByCredentials(string email, string password);
     }
 }
